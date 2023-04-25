@@ -1,6 +1,9 @@
 package com.example.Efectores.controladores;
 
 import com.example.Efectores.entidades.Proveedores;
+import com.example.Efectores.enumeraciones.Departamento;
+import com.example.Efectores.enumeraciones.Pais;
+import com.example.Efectores.enumeraciones.Provincia;
 import com.example.Efectores.servicios.ProveedorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,11 @@ public class ProveedoresController {
 
     @GetMapping("/crear")
     public String crear(ModelMap modelo) {
+
+        modelo.addAttribute("paises", Pais.values());
+        modelo.addAttribute("provincias", Provincia.values());
+        modelo.addAttribute("departamentos", Departamento.values());
+
         return "proveedor_crear.html";
     }
 
@@ -60,6 +68,10 @@ public class ProveedoresController {
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Long id, ModelMap modelo) {
         modelo.put("proveedor", proveedorService.getProveedorById(id));
+
+        modelo.addAttribute("paises", Pais.values());
+        modelo.addAttribute("provincias", Provincia.values());
+        modelo.addAttribute("departamentos", Departamento.values());
 
         return "proveedor_editar.html";
     }

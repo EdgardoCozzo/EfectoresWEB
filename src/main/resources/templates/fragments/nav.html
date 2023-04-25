@@ -1,0 +1,33 @@
+<nav>
+  <div class="header__superior">
+    <div class="logo">
+      <a class="logo-link" href="/">
+        <img class="logo-img" th:src="@{/img/efecLogo.png}" alt="Logotipo" />
+      </a>
+    </div>
+    <div class="usuario">
+      <a href="#">
+        <img class="usuario-img" th:src="@{/img/chica2.png}" alt="usuario" />
+      </a>
+    </div>
+  </div>
+
+  <div class="container__menu">
+    <div class="menu">
+      <div class="nav-menu">
+        <ul class="menu-ul">
+          <li class="menu-li">
+            <a href="#">Datos</a>
+            <ul>
+              <li class="submenu-link">
+                <a class="menu-click" th:href="@{/proveedor/listar}"
+                  >Proveedores</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

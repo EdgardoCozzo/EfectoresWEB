@@ -1,10 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmnls:th="http://www.thymeleaf.org" xmnls:sec="http://www.thymeleaf.org/extras/spring/spring-security">
+
+    <head th:replace= "/fragments/head :: head" </head>
+    <link rel="stylesheet" href="../static/repartidor_crear.css" type="text/css"/>
 </head>
+
 <body>
-<h1>Crear una ficha para poder editar los campos de un proveedor especifico</h1>
+    <header>  
+        <nav th:replace= "/fragments/nav :: nav" </nav></nav>         
+    </header>
+
+
+<main>    
+    <section class="container-flex-repartidor">
+        <div class="formulario" >
+            <h2 class="titulo-seccion">EDITAR PROVEEDOR</h2>
+            <form class="form"
+                    th:action="@{/proveedor/editar/__${proveedor.id}__}"
+                    method="POST"
+                    enctype="multipart/form-data"
+                    id="formu"
+                    >
+                <input hidden th:value="${id}" name="id"> 
+                <div class="label">
+                    <label class="subtitulo-label">Nombre</label>
+                    <input
+                        type="text"
+                        class="form-input"
+                        name="nombre"
+                        placeholder="Ingresar Nombre"
+                        th:value="${proveedor.nombre}"
+                        />
+                </div>
+                <div class="label">
+                    <label class="subtitulo-label">Domicilio</label>
+                    <input
+                        type="text"
+                        class="form-input"
+                        name="domicilio"
+                        placeholder="Ingresar domicilio"
+                        th:value="${proveedor.domicilio}"
+                        />
+                </div>
+                <div class="label">
+                    <label class="subtitulo-label">Email</label>
+                    <input
+                        type="text"
+                        class="form-input"
+                        name="email"
+                        placeholder="ingresar Email"
+                        th:value="${proveedor.email}"
+                    />
+                </div>
+                <div class="label">
+                    <label class="subtitulo-label">Cuit</label>
+                    <input
+                        type="text"
+                        class="form-input"
+                        name="cuit"
+                        placeholder="ingrese Cuit"
+                        th:value="${proveedor.cuit}"
+                        />
+                </div>
+                <div class="label">
+                    <label class="subtitulo-label">Telefono1</label>
+                    <input
+                        type="text"
+                        class="form-input"
+                        name="telefono1"
+                        placeholder="ingrese telefono1"
+                        th:value="${proveedor.telefono1}"
+                        />
+                </div>
+                <div class="label">
+                    <label class="subtitulo-label">Telefono2</label>
+                    <input
+                        type="text"
+                        class="form-input"
+                        name="telefono2"
+                        placeholder="ingrese telefono2"
+                        th:value="${proveedor.telefono2}"
+                        />
+                </div>
+                
+                <div class="label">
+                    <label class="subtitulo-label" >Pais</label>
+                    <select name="nombrePais" class="select-crear">
+                        <option>Seleccionar Pais</option>
+                        <option 
+                            th:each="pais : ${paises}"
+                            th:value="${pais}"
+                            th:text="${pais}"
+                            />
+                    </select>
+                </div>
+                <div class="label">
+                    <label class="subtitulo-label">Provincia</label>
+                    <select name="nombreProvincia" class="select-crear">
+                        <option>Seleccionar Provincia</option>
+                        <option th:each="provincia : ${provincias}" 
+                                th:value="${provincia}"
+                                th:text="${provincia}"
+                                />
+                    </select>
+                </div>
+                <div class="label">
+                    <label class="subtitulo-label">Departamento</label>
+                    <select name="nombreDepartamento" class="select-crear">
+                        <option>Seleccionar Departamento</option>
+                        <option th:each="departamento : ${departamentos}"
+                                th:value="${departamento}"
+                                th:text="${departamento}"
+                                />
+                    </select>
+                </div>
+                <div class="btn-div">
+                    <button type="submit" class="btn" id="boton">
+                        SUBIR
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+
+<footer th:replace= "/fragments/footer :: footer" </footer>
 </body>
 </html>
