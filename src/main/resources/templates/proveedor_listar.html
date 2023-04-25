@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section>
+            <div class="container-flex-repartidor-listar">
+                <div class="boton-nuevo">
+                    <a id="boton-nuevo" th:href="@{/proveedor/crear}">Crear Nuevo</a>
+                    <a id="boton-pdf" th:href="@{/proveedor/exportarPDF}">Reporte PDF</a>
+                    <a id="boton-pdf" th:href="@{/proveedor/exportarExcel}">Reporte Excel</a>
+    
+                </div>
+                <div class="tabla-repartidor"  >
+                    <div>
+                        <h2 class="titulo-lista">LISTADO DE PROVEEDORES</h2>
+                        <hr>
+                        <table class="tabla" >
+                            <thead>
+                                <tr>
+                                    <!--                                <th id="titulos-listas" scope="col">ID</th>-->
+                                    <th id="titulos-listas" scope="col">Nombre</th>
+                                    <th id="titulos-listas" scope="col">Domicilio</th>
+                                    <th id="titulos-listas" scope="col">email</th>
+                                    <th id="titulos-listas" scope="col">Cuit</th>
+                                    <th id="titulos-listas" scope="col">Telefono1</th>
+                                    <th id="titulos-listas" scope="col">Telefono2</th>
+                                    <th id="titulos-listas" scope="col">Provincia</th>
+                                    <th id="titulos-listas" scope="col">Departamento</th>
+                                    <th id="titulos-listas" scope="col"> Pais</th>
+                                    <th id="titulos-listas-acciones" scope="col">Editar</th>
+                                    <th id="titulos-listas-acciones" scope="col">Eliminar</th>
+    
+                                </tr>
+                            </thead>
+                            <tbody class="linea-lista" th:each="proveedor : ${proveedor}">
+                                <tr>
+                                    <!--<td id="contenido-lista" th:text="${proveedor.id}"></td>-->
+                                    <td id="contenido-lista" th:text="${proveedor.nombre}"></td>
+                                    <td id="contenido-lista" th:text="${proveedor.domicilio}"></td>
+                                    <td id="contenido-lista" th:text="${proveedor.email}"></td>
+                                    <td id="contenido-lista" th:text="${proveedor.cuit}"></td>
+                                    <td id="contenido-lista" th:text="${proveedor.telefono1}"></td>
+                                    <td id="contenido-lista" th:text="${proveedor.telefono2}"></td>
+                                    <td id="contenido-lista" th:text="${proveedor.nombreProvincia}"></td>
+                                    <td id="contenido-lista" th:text="${proveedor.nombreDepartamento}"></td>
+                                    <td id="contenido-lista" th:text="${proveedor.nombrePais}"></td>
+                                    <td id="lista-links-tabla"><a class="links-lista-editar" th:href="@{/proveedor/editar/__${proveedor.id}__}">
+                                            <span class="material-symbols-outlined">
+                                                edit
+                                            </span></a></td>
+                                    <td id="lista-links-tabla"><a class="links-lista-eliminar" onclick="return confirm('¿Estás seguro que deseas eliminar el proveedor?');" th:href="@{/proveedor/eliminar/__${proveedor.id}__}">
+                                            <span class="material-symbols-outlined">
+                                                delete
+                                            </span>
+                                        </a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+    
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
