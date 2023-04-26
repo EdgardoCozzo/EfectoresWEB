@@ -1,5 +1,4 @@
 main{
-    height: 90vh;
     background-color: rgba(198, 198, 198, 0.583);
 }
 
@@ -14,7 +13,6 @@ main{
 .tabla-repartidor{
     display: flex;
     justify-content:center;
-    background-color: rgba(161, 111, 111, 0.583);
     height: auto;
     padding-top: 10px;
     margin-top: 30px;
