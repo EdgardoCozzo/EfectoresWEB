@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmnls:th="http://www.thymeleaf.org" xmnls:sec="http://www.thymeleaf.org/extras/spring/spring-security">
+
+<head th:replace= "/fragments/head :: head" </head>
+<link rel="stylesheet" href="../static/repartidor_crear.css" type="text/css"/>
+</head>
+
+<body>
+<header>
+    <nav th:replace= "/fragments/nav :: nav" </nav></nav>
+</header>
+
+
+<main>
+    <section class="container-flex-repartidor">
+        <div class="formulario" >
+            <h2 class="titulo-seccion">EDITAR PRODUCTO</h2>
+            <form class="form"
+                  th:action="@{/producto/editar/__${producto.id}__}"
+                  method="POST"
+                  enctype="multipart/form-data"
+                  id="formu"
+            >
+                <input hidden th:value="${id}" name="id">
+                <div class="label">
+                    <label class="subtitulo-label">Nombre</label>
+                    <input
+                            type="text"
+                            class="form-input"
+                            name="nombre"
+                            placeholder="Nombre Producto"
+                            th:value="${producto.nombre}"
+                    />
+                <div class="btn-div">
+                    <button type="submit" class="btn" id="boton">
+                        SUBIR
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+
+<footer th:replace= "/fragments/footer :: footer" </footer>
+</body>
+</html>

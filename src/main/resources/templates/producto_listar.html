@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html xmnls:th="http://www.thymeleaf.org" xmnls:sec="http://www.thymeleaf.org/extras/spring/spring-security">
+
+<head th:replace= "/fragments/head :: head" </head>
+
+
+<body>
+<header>
+    <nav th:replace= "/fragments/nav :: nav" </nav></nav>
+</header>
+
+
+<main>
+    <section>
+        <div class="container-flex-repartidor-listar">
+            <div class="boton-nuevo">
+                <a id="boton-nuevo" th:href="@{/producto/crear}">Crear Nuevo</a>
+            </div>
+            <div class="tabla-repartidor"  >
+                <div>
+                    <h2 class="titulo-lista">LISTADO DE PRODUCTOS</h2>
+                    <hr>
+                    <table class="tabla" >
+                        <thead>
+                        <tr>
+                            <th id="titulos-listas" scope="col">Nombre</th>
+                            <!--<th id="titulos-listas" scope="col">Tipo Producto</th>-->
+                            <th id="titulos-listas-acciones" scope="col">Editar</th>
+                            <th id="titulos-listas-acciones" scope="col">Eliminar</th>
+                        </tr>
+                        </thead>
+                        <tbody class="linea-lista" th:each="producto:${producto}">
+                        <tr>
+                            <td id="contenido-lista" th:text="${producto.nombre}"></td>
+                            <!--<td id="contenido-lista" th:text="${tipo.nombre}"></td>-->
+                            <td id="lista-links-tabla"><a class="links-lista-editar" th:href="@{/producto/editar/__${producto.id}__}">
+                                        <span class="material-symbols-outlined">
+                                            edit
+                                        </span></a></td>
+                            <td id="lista-links-tabla"><a class="links-lista-eliminar" onclick="return confirm('¿Estás seguro que deseas eliminar el producto?');" th:href="@{/producto/eliminar/__${producto.id}__}">
+                                        <span class="material-symbols-outlined">
+                                            delete
+                                        </span>
+                            </a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<footer th:replace= "/fragments/footer :: footer" </footer>
+</body>
+</html>
