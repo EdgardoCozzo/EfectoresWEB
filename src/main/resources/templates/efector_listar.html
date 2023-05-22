@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html xmnls:th="http://www.thymeleaf.org" xmnls:sec="http://www.thymeleaf.org/extras/spring/spring-security">
+
+    <head th:replace= "/fragments/head :: head" </head></head>
+
+
+<body>
+    <header>  
+        <nav th:replace= "/fragments/nav :: nav" </nav></nav>         
+</header>
+
+
+<main>
+    <section>
+        <div class="container-flex-repartidor-listar">
+            <div class="boton-nuevo">
+                <a id="boton-nuevo" th:href="@{/efector/crear}">Crear Nuevo</a>
+            </div>
+            <div class="tabla-repartidor"  >
+                <div>
+                    <h2 class="titulo-lista">LISTADO DE EFECTORES</h2>
+                    <hr>
+                    <table class="tabla" >
+                        <thead>
+                            <tr>
+                                <th id="titulos-listas" scope="col">Nombre</th>
+                                <th id="titulos-listas" scope="col">Domicilio</th>
+                                <th id="titulos-listas" scope="col">email</th>
+                                <th id="titulos-listas" scope="col">Cuit</th>
+                                <th id="titulos-listas" scope="col">Telefono1</th>
+                                <th id="titulos-listas" scope="col">Telefono2</th>
+                                <th id="titulos-listas" scope="col"> Pais</th>
+                                <th id="titulos-listas" scope="col">Provincia</th>
+                                <th id="titulos-listas" scope="col">Departamento</th>
+                                <th id="titulos-listas-acciones" scope="col">Editar</th>
+                                <th id="titulos-listas-acciones" scope="col">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody class="linea-lista" th:each="efector : ${efector}">
+                            <tr>
+                                <td id="contenido-lista" th:text="${efector.nombre}"></td>
+                                <td id="contenido-lista" th:text="${efector.domicilio}"></td>
+                                <td id="contenido-lista" th:text="${efector.email}"></td>
+                                <td id="contenido-lista" th:text="${efector.cuit}"></td>
+                                <td id="contenido-lista" th:text="${efector.telefono1}"></td>
+                                <td id="contenido-lista" th:text="${efector.telefono2}"></td>
+                                <td id="contenido-lista" th:text="${efector.nombrePais}"></td>
+                                <td id="contenido-lista" th:text="${efector.nombreProvincia}"></td>
+                                <td id="contenido-lista" th:text="${efector.nombreDepartamento}"></td>
+                                <td id="lista-links-tabla"><a class="links-lista-editar" th:href="@{/efector/editar/__${efector.id}__}">
+                                        <span class="material-symbols-outlined">
+                                            edit
+                                        </span></a></td>
+                                <td id="lista-links-tabla"><a class="links-lista-eliminar" onclick="return confirm('¿Estás seguro que deseas eliminar el efector?');" th:href="@{/efector/eliminar/__${efector.id}__}">
+                                        <span class="material-symbols-outlined">
+                                            delete
+                                        </span>
+                                    </a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<footer th:replace= "/fragments/footer :: footer" </footer>
+</body>
+</html>
