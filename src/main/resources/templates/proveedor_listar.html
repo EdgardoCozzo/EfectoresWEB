@@ -30,7 +30,7 @@
                                 <th id="titulos-listas" scope="col">Cuit</th>
                                 <th id="titulos-listas" scope="col">Telefono1</th>
                                 <th id="titulos-listas" scope="col">Telefono2</th>
-                                <th id="titulos-listas" scope="col"> Pais</th>
+                                <!--                                <th id="titulos-listas" scope="col"> Pais</th>-->
                                 <th id="titulos-listas" scope="col">Provincia</th>
                                 <th id="titulos-listas" scope="col">Departamento</th>
                                 <th id="titulos-listas-acciones" scope="col">Editar</th>
@@ -45,9 +45,9 @@
                                 <td id="contenido-lista" th:text="${proveedor.cuit}"></td>
                                 <td id="contenido-lista" th:text="${proveedor.telefono1}"></td>
                                 <td id="contenido-lista" th:text="${proveedor.telefono2}"></td>
-                                <td id="contenido-lista" th:text="${proveedor.nombrePais}"></td>
-                                <td id="contenido-lista" th:text="${proveedor.nombreProvincia}"></td>
-                                <td id="contenido-lista" th:text="${proveedor.nombreDepartamento}"></td>
+<!--                                <td id="contenido-lista" th:text="${proveedor.nombrePais}"></td>-->
+                                <td id="contenido-lista" th:text="${proveedor.provincia}"></td>
+                                <td id="contenido-lista" th:text="${proveedor.departamento}"></td>
                                 <td id="lista-links-tabla"><a class="links-lista-editar" th:href="@{/proveedor/editar/__${proveedor.id}__}">
                                         <span class="material-symbols-outlined">
                                             edit
