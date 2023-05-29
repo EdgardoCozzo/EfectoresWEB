@@ -33,7 +33,7 @@ public class Producto {
     private String usuarioUltModificacion;
 
     @Column(name = "eliminado")
-    private boolean eliminado = false;
+    private Boolean eliminado = false;
 
 
     @PrePersist
