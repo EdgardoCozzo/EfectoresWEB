@@ -1,10 +1,7 @@
 package com.example.Efectores.controladores;
 
 import com.example.Efectores.entidades.Proveedor;
-import com.example.Efectores.enumeraciones.Departamento;
-import com.example.Efectores.enumeraciones.Provincia;
-import com.example.Efectores.servicios.ProveedorServicio;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.Efectores.servicios.ProveedorServicioImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +13,11 @@ import java.util.List;
 @RequestMapping("/proveedor")
 public class ProveedorControlador {
 
-    @Autowired
-    public ProveedorServicio proveedorServicio;
+    private final ProveedorServicioImpl proveedorServicio;
+
+    public ProveedorControlador(ProveedorServicioImpl proveedorServicio) {
+        this.proveedorServicio = proveedorServicio;
+    }
 
     @GetMapping("/crear")
     public String crear(ModelMap modelo) {

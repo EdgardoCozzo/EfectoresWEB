@@ -15,6 +15,7 @@ public class Proveedor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "Nombre")
     private String nombre;
 
@@ -58,7 +59,20 @@ public class Proveedor {
     @Column(name = "UsuarioUltimaModificacion")
     private String usuarioUltModificacion;
 
+    @Column(name = "eliminado")
+    private Boolean eliminado = false;
 
 
+    @PrePersist
+    public void prePersist() {
+        fechaCreacion = LocalDate.now(); // Establecer la fecha de creación en la fecha actual
+        // usuarioCreacion = authentication.getName(); // Establecer el usuario de creación en el usuario actual
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        fechaUltModificacion = LocalDate.now(); // Establecer la fecha de última modificación en la fecha actual
+        // usuarioUltModificacion = authentication.getName(); // Establecer el usuario de última modificación en el usuario actual
+    }
 
 }
