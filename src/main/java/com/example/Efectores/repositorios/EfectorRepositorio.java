@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface EfectorRepository extends CrudRepository<Efector,Long> {
-
-    List<Efector> findByEliminadoFalse();
+public interface EfectorRepositorio extends CrudRepository<Efector, Long> {
+    List<Efector>findByEliminadoFalse();
     Optional<Efector> findByIdAndEliminadoFalse(Long id);
+
 }

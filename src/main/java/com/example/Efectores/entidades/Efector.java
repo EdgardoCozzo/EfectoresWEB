@@ -18,12 +18,12 @@ public class Efector {
     private String nombre;
     @Column(name="domicilio")
     private String domicilio;
-    @Column(name="nombrePais")
-    private String nombrePais;
-    @Column(name="nombreProvincia")
-    private String nombreProvincia;
-    @Column(name="nombreDepartamento")
-    private String nombreDepartamento;
+
+
+    @Column(name="provincia")
+    private String provincia;
+    @Column(name="departamento")
+    private String departamento;
     @Column(name="cuit")
     private String cuit;
     @Column(name="telefono1")
@@ -56,7 +56,5 @@ public class Efector {
     @PreUpdate
     public void preUpdate() {
         fechaUltModificacion = LocalDate.now();
-
-
     }
 }
