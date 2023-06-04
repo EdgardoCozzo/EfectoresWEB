@@ -38,7 +38,9 @@ public class ProveedorServicioImpl implements ProveedorServicio {
     }
 
     @Override
-    public Proveedor modificarProveedor(long id, String nombre, String domicilio, String telefono1, String telefono2, String cuit, String email, String departamento, String provincia, LocalDate fechaCreacion, String usuarioCreacion, LocalDate fechaUltModificacion, String usuarioUltModificacion) {
+    public Proveedor modificarProveedor(long id, String nombre, String domicilio, String telefono1, String telefono2, String cuit, String email,
+                                        String departamento, String provincia, LocalDate fechaCreacion, String usuarioCreacion, LocalDate fechaUltModificacion,
+                                        String usuarioUltModificacion) {
         Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
 
 
