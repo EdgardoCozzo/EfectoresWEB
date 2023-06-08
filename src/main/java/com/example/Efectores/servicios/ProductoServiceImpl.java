@@ -19,19 +19,19 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
-    public List<Producto> getAllProducto() {
+    public List<Producto> listarProducto() {
         return productoRepository.findByEliminadoFalse();
 
     }
 
     @Override
-    public Producto getProductoById(Long id) {
+    public Producto buscarProductoPorId(Long id) {
 
         return productoRepository.findByIdAndEliminadoFalse(id).orElse(null);
     }
 
     @Override
-    public Producto saveProducto(String nombre, LocalDate fechaCreacion, String usuarioCreacion,
+    public Producto guardarProducto(String nombre, LocalDate fechaCreacion, String usuarioCreacion,
                                  LocalDate fechaUltModificacion, String usuarioUltModificacion) {
         Producto producto = new Producto();
         producto.setNombre(nombre);
@@ -44,7 +44,7 @@ public class ProductoServiceImpl implements ProductoService {
 
 
     @Override
-    public Producto updateProducto(Long id, Producto producto) {
+    public Producto modificarProducto(Long id, Producto producto) {
         Optional<Producto> optionalProducto = productoRepository.findById(id);
 
 
@@ -52,8 +52,6 @@ public class ProductoServiceImpl implements ProductoService {
             Producto productoActual = optionalProducto.get();
 
             productoActual.setNombre(producto.getNombre());
-            productoActual.setFechaCreacion(producto.getFechaCreacion());
-            productoActual.setUsuarioCreacion(producto.getUsuarioCreacion());
             productoActual.setUsuarioUltModificacion(producto.getUsuarioUltModificacion());
             productoActual.setFechaUltModificacion(producto.getFechaUltModificacion());
 
@@ -64,7 +62,7 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
-    public void deleteProducto(Long id) {
+    public void eliminarProducto(Long id) {
         Producto producto = productoRepository.findById(id).orElse(null);
         if (producto != null) {
             producto.setEliminado(true);

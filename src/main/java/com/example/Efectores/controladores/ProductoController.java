@@ -2,7 +2,7 @@ package com.example.Efectores.controladores;
 
 import com.example.Efectores.entidades.Producto;
 import com.example.Efectores.servicios.ProductoServiceImpl;
-import lombok.Data;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Controller
-@Data
+@AllArgsConstructor
 @RequestMapping("/producto")
 public class ProductoController {
 
@@ -24,7 +24,7 @@ public class ProductoController {
     @GetMapping("/crear")
     public String crear(ModelMap modelo) {
 
-        List<Producto> producto = productoService.getAllProducto();
+        List<Producto> producto = productoService.listarProducto();
         //List<Tipo> tipo=tipoService.getAllTipo();
 
         modelo.addAttribute("producto", producto);
@@ -40,9 +40,9 @@ public class ProductoController {
                            String usuarioCreacion, LocalDate fechaUltModificacion,
                            String usuarioUltModificacion, ModelMap modelo) {
         try {
-            productoService.saveProducto(nombre, fechaCreacion, usuarioCreacion, fechaUltModificacion, usuarioUltModificacion);
+            productoService.guardarProducto(nombre, fechaCreacion, usuarioCreacion, fechaUltModificacion, usuarioUltModificacion);
             modelo.put("exito", "El producto se cargo con exito");
-            modelo.addAttribute("producto", productoService.getAllProducto());
+            modelo.addAttribute("producto", productoService.listarProducto());
 
             return "producto_listar.html";
         } catch (Exception ex) {
@@ -56,7 +56,7 @@ public class ProductoController {
 
     @GetMapping("/listar")
     public String listar(ModelMap modelo) {
-        List<Producto> producto = productoService.getAllProducto();
+        List<Producto> producto = productoService.listarProducto();
 
         if (!producto.isEmpty()) {
             modelo.addAttribute("producto", producto);
@@ -68,7 +68,7 @@ public class ProductoController {
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Long id, ModelMap modelo) {
 
-        modelo.put("producto", productoService.getProductoById(id));
+        modelo.put("producto", productoService.buscarProductoPorId(id));
 
         return "producto_editar.html";
     }
@@ -77,12 +77,12 @@ public class ProductoController {
     @Transactional
     public String editarProducto(@PathVariable Long id, Producto producto, ModelMap modelo) {
         try {
-            productoService.updateProducto(id, producto);
+            productoService.modificarProducto(id, producto);
 
             modelo.put("exito", "exito");
             return "redirect:../listar";
         } catch (Exception ex) {
-            modelo.put("producto", productoService.getProductoById(id));
+            modelo.put("producto", productoService.buscarProductoPorId(id));
             modelo.put("error", ex.getMessage());
 
             return "producto_editar.html";
@@ -91,7 +91,7 @@ public class ProductoController {
 
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Long id, ModelMap modelo) {
-        productoService.deleteProducto(id);
+        productoService.eliminarProducto(id);
         return "redirect:/producto/listar";
     }
 

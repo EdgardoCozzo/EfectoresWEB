@@ -8,16 +8,16 @@ import java.util.List;
 
 public interface ProductoService {
 
-    List<Producto> getAllProducto();
+    List<Producto> listarProducto();
 
-    Producto getProductoById(Long id);
+    Producto buscarProductoPorId(Long id);
 
-    Producto saveProducto(String nombre, LocalDate fechaCreacion, String usuarioCreacion,
+    Producto guardarProducto(String nombre, LocalDate fechaCreacion, String usuarioCreacion,
                           LocalDate fechaUltModificacion, String usuarioUltModificacion);
 
-    Producto updateProducto(Long id, Producto producto);
+    Producto modificarProducto(Long id, Producto producto);
 
-    void deleteProducto(Long Id);
+    void eliminarProducto(Long Id);
 
 
 }
