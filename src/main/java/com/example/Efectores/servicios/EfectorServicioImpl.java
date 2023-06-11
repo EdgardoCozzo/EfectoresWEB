@@ -1,24 +1,16 @@
 package com.example.Efectores.servicios;
-
 import com.example.Efectores.entidades.Efector;
 import com.example.Efectores.repositorios.EfectorRepositorio;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-
 @Service
 public class EfectorServicioImpl implements EfectorServicio {
-
     private final EfectorRepositorio efectorRepositorio;
-
-
-
     public EfectorServicioImpl(EfectorRepositorio efectorRepositorio) {
         this.efectorRepositorio = efectorRepositorio;
     }
-
     @Override
     public Efector guardarEfector(String nombre, String domicilio, String telefono1, String telefono2, String cuit, String email, String departamento, String provincia, LocalDate fechaCreacion, String usuarioCreacion, LocalDate fechaUltModificacion, String usuarioUltModificacion) {
         Efector efector = new Efector();
@@ -38,17 +30,12 @@ public class EfectorServicioImpl implements EfectorServicio {
         efector.setUsuarioUltModificacion(usuarioUltModificacion);
 
         return efectorRepositorio.save(efector);
-
-
     }
-
     @Override
     public Efector modificarEfector(Long id, String nombre, String domicilio, String telefono1, String telefono2, String cuit, String email, String departamento, String provincia, LocalDate fechaCreacion, String usuarioCreacion, LocalDate fechaUltModificacion, String usuarioUltModificacion) {
         Optional<Efector> respuesta = efectorRepositorio.findById(id);
 
-
         if (respuesta.isPresent()) {
-
             Efector efector = respuesta.get();
             efector.setNombre(nombre);
             efector.setDomicilio(domicilio);
@@ -64,19 +51,17 @@ public class EfectorServicioImpl implements EfectorServicio {
             efector.setFechaUltModificacion(fechaUltModificacion);
             efectorRepositorio.save(efector);
         }
+
         return null;
     }
-
     @Override
     public List<Efector> listarEfectores() {
         return efectorRepositorio.findByEliminadoFalse();
     }
-
     @Override
     public Efector buscarEfectorPorId(Long id) {
         return efectorRepositorio.findByIdAndEliminadoFalse(id).orElse(null);
     }
-
     @Override
     public void eliminarEfector(Long id) {
         Efector efector = efectorRepositorio.findById(id).orElse(null);
@@ -84,6 +69,5 @@ public class EfectorServicioImpl implements EfectorServicio {
             efector.setEliminado(true);
             efectorRepositorio.save(efector);
         }
-
     }
 }

@@ -90,7 +90,7 @@ main{
     text-decoration: none;
     color: #fff;
     font-family: 'Open Sans', sans-serif;
- /*   margin: 0 0 0 60%;*/
+    /*   margin: 0 0 0 60%;*/
 }
 #boton-pdf:hover{
     background: #1a4d8f;

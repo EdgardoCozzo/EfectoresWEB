@@ -1,29 +1,23 @@
 <!DOCTYPE html>
-
 <html xmnls:th="http://www.thymeleaf.org" xmnls:sec="http://www.thymeleaf.org/extras/spring/spring-security">
     
-    <head th:replace= "/fragments/head :: head" </head></head>
-    
+    <head th:replace= "/fragments/head :: head" </head>
 
-    
-    <body>
+    <body onLoad="saludar1()">
         <header>  
-            <nav th:replace= "/fragments/nav :: nav" </nav></nav>         
+            <nav th:replace= "/fragments/nav :: nav" </nav>         
         </header>
 
-
         <main>
-
-            <div class="container-index">
-                
-                <div class="img"></div>
+            <!-- <div class="boton-div">
+                <a id="boton1" onClick="saludar()">Saludar</a>
             </div>
-
             
-            
+            <a onClick="saludar2()">Saluda DOMr</a>
+            <div class="container-index">
+                <div class="img"></div>
+            </div> -->
         </main>
-
-
-        <footer th:replace= "/fragments/footer :: footer" </footer>
+        <script th:src="app.js"></script>
     </body>
 </html>

@@ -1,128 +1,125 @@
 <!DOCTYPE html>
 <html xmnls:th="http://www.thymeleaf.org" xmnls:sec="http://www.thymeleaf.org/extras/spring/spring-security">
+    
+    <head th:replace=" /fragments/head :: head" ></head>
 
-    <head th:replace= "/fragments/head :: head" </head>
+    <body>
+        <header>  
+            <nav th:replace=" /fragments/nav :: nav"></nav>
+        </header>
 
-</head>
-
-<body>
-    <header>  
-        <nav th:replace= "/fragments/nav :: nav" </nav></nav>         
-    </header>
-
-
-    <main>    
-        <section class="container-flex-repartidor">
-            <div class="formulario" >
-                <h2 class="titulo-seccion">CREAR EFECTOR</h2>
-                <form class="form"
-                        th:action="@{/efector/creado}"
-                        method="POST"
-                        enctype="multipart/form-data"
-                        id="formu"
-                        >
-                    <div class="label">
-                        <label class="subtitulo-label">Nombre</label>
-                        <input
-                            type="text"
-                            class="form-input"
-                            name="nombre"
-                            placeholder="Ingresar Nombre"
-                            th:value="${nombre}"
-                            />
-                    </div>
-                    <div class="label">
-                        <label class="subtitulo-label">Domicilio</label>
-                        <input
-                            type="text"
-                            class="form-input"
-                            name="domicilio"
-                            placeholder="Ingresar domicilio"
-                            th:value="${domicilio}"
-                            />
-                    </div>
-                    <div class="label">
-                        <label class="subtitulo-label">Email</label>
-                        <input
-                        type="text"
-                        class="form-input"
-                        name="email"
-                        placeholder="ingresar Email"
-                        th:value="${email}"
-                        />
-                    </div>
-                    <div class="label">
-                        <label class="subtitulo-label">Cuit</label>
-                        <input
-                            type="text"
-                            class="form-input"
-                            name="cuit"
-                            placeholder="ingrese Cuit"
-                            th:value="${cuit}"
-                            />
-                    </div>
-                    <div class="label">
-                        <label class="subtitulo-label">Telefono1</label>
-                        <input
-                            type="text"
-                            class="form-input"
-                            name="telefono1"
-                            placeholder="ingrese telefono1"
-                            th:value="${telefono1}"
-                            />
-                    </div>
-                    <div class="label">
-                        <label class="subtitulo-label">Telefono2</label>
-                        <input
-                            type="text"
-                            class="form-input"
-                            name="telefono2"
-                            placeholder="ingrese telefono2"
-                            th:value="${telefono2}"
-                            />
-                    </div>
-                    
-                    <div class="label">
-                        <label class="subtitulo-label" >Pais</label>
-                        <select name="nombrePais" class="select-crear">
-                            <option>Seleccionar Pais</option>
-                            <option 
-                                th:each="pais : ${paises}"
-                                th:value="${pais}"
-                                th:text="${pais}"
+        <main>    
+            <section class="container-flex-repartidor">
+                <div class="formulario" >
+                    <h2 class="titulo-seccion">CREAR EFECTOR</h2>
+                    <form class="form"
+                            th:action="@{/efector/creado}"
+                            method="POST"
+                            enctype="multipart/form-data"
+                            id="formu"
+                            >
+                        <div class="label">
+                            <label class="subtitulo-label">Nombre</label>
+                            <input
+                                type="text"
+                                class="form-input"
+                                name="nombre"
+                                placeholder="Ingresar Nombre"
+                                th:value="${nombre}"
                                 />
-                        </select>
-                    </div>
-                    <div class="label">
-                        <label class="subtitulo-label">Provincia</label>
-                        <select name="nombreProvincia" class="select-crear">
-                            <option>Seleccionar Provincia</option>
-                            <option th:each="provincia : ${provincias}" 
-                                    th:value="${provincia}"
-                                    th:text="${provincia}"
+                        </div>
+                        <div class="label">
+                            <label class="subtitulo-label">Domicilio</label>
+                            <input
+                                type="text"
+                                class="form-input"
+                                name="domicilio"
+                                placeholder="Ingresar domicilio"
+                                th:value="${domicilio}"
+                                />
+                        </div>
+                        <div class="label">
+                            <label class="subtitulo-label">Email</label>
+                            <input
+                            type="text"
+                            class="form-input"
+                            name="email"
+                            placeholder="ingresar Email"
+                            th:value="${email}"
+                            />
+                        </div>
+                        <div class="label">
+                            <label class="subtitulo-label">Cuit</label>
+                            <input
+                                type="text"
+                                class="form-input"
+                                name="cuit"
+                                placeholder="ingrese Cuit"
+                                th:value="${cuit}"
+                                />
+                        </div>
+                        <div class="label">
+                            <label class="subtitulo-label">Telefono1</label>
+                            <input
+                                type="text"
+                                class="form-input"
+                                name="telefono1"
+                                placeholder="ingrese telefono1"
+                                th:value="${telefono1}"
+                                />
+                        </div>
+                        <div class="label">
+                            <label class="subtitulo-label">Telefono2</label>
+                            <input
+                                type="text"
+                                class="form-input"
+                                name="telefono2"
+                                placeholder="ingrese telefono2"
+                                th:value="${telefono2}"
+                                />
+                        </div>
+                        
+                        <div class="label">
+                            <label class="subtitulo-label" >Pais</label>
+                            <select name="nombrePais" class="select-crear">
+                                <option>Seleccionar Pais</option>
+                                <option 
+                                    th:each="pais : ${paises}"
+                                    th:value="${pais}"
+                                    th:text="${pais}"
                                     />
-                        </select>
-                    </div>
-                    <div class="label">
-                        <label class="subtitulo-label">Departamento</label>
-                        <select name="nombreDepartamento" class="select-crear">
-                            <option>Seleccionar Departamento</option>
-                            <option th:each="departamento : ${departamentos}"
-                                    th:value="${departamento}"
-                                    th:text="${departamento}"
-                                    />
-                        </select>
-                    </div>
-                    <div class="btn-div">
-                        <button type="submit" class="btn" id="boton">
-                            SUBIR
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </section>
-    </main>
+                            </select>
+                        </div>
+                        <div class="label">
+                            <label class="subtitulo-label">Provincia</label>
+                            <select name="nombreProvincia" class="select-crear">
+                                <option>Seleccionar Provincia</option>
+                                <option th:each="provincia : ${provincias}" 
+                                        th:value="${provincia}"
+                                        th:text="${provincia}"
+                                        />
+                            </select>
+                        </div>
+                        <div class="label">
+                            <label class="subtitulo-label">Departamento</label>
+                            <select name="nombreDepartamento" class="select-crear">
+                                <option>Seleccionar Departamento</option>
+                                <option th:each="departamento : ${departamentos}"
+                                        th:value="${departamento}"
+                                        th:text="${departamento}"
+                                        />
+                            </select>
+                        </div>
+                        <div class="btn-div">
+                            <button type="submit" class="btn" id="boton">
+                                SUBIR
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
 
-    <footer th:replace= "/fragments/footer :: footer" </footer>
-</body>
+        <footer th:replace= "/fragments/footer :: footer" </footer>
+    </body>
 </html>

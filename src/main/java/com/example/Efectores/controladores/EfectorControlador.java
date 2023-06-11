@@ -1,31 +1,22 @@
 package com.example.Efectores.controladores;
-
 import com.example.Efectores.entidades.Efector;
-import com.example.Efectores.servicios.EfectorServicio;
 import com.example.Efectores.servicios.EfectorServicioImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
 import java.util.List;
-
 @Controller
 @RequestMapping("/efector")
 public class EfectorControlador {
-
     private final EfectorServicioImpl efectorServicio;
-
-
     public EfectorControlador(EfectorServicioImpl efectorServicio) {
         this.efectorServicio = efectorServicio;
     }
-
     @GetMapping("/crear")
     public String crear(ModelMap modelo) {
         return "efector_crear.html";
     }
-
     @PostMapping("creado")
     public String registro(
             @RequestParam String nombre,
@@ -51,6 +42,7 @@ public class EfectorControlador {
 
         } catch (Exception ex) {
             modelo.put("error", ex.getMessage());
+
             return "efector_crear.html";
         }
     }
@@ -61,7 +53,6 @@ public class EfectorControlador {
 
         return"proveedor_listar.html";
     }
-
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Long id, ModelMap modelo) {
         modelo.put("efector", efectorServicio.buscarEfectorPorId(id));
@@ -71,7 +62,6 @@ public class EfectorControlador {
 
         return "efector_editar.html";
     }
-
     @PostMapping("/editar/{id}")
     public String modificarEfector(@PathVariable Long id,
                                      String nombre,
