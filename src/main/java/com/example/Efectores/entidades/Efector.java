@@ -2,6 +2,7 @@ package com.example.Efectores.entidades;
 import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDate;
+
 @Data
 @Table
 @Entity
@@ -20,6 +21,7 @@ public class Efector {
     private String nombreDepartamento;
     @Column(name="pais")
     private String nombrePais;
+
     @Column(name="cuit")
     private String cuit;
     @Column(name="telefono1")
@@ -43,10 +45,12 @@ public class Efector {
 
     @Column(name = "eliminado")
     private boolean eliminado = false;
+
     @PrePersist
     public void prePersist() {
         fechaCreacion = LocalDate.now();
     }
+
     @PreUpdate
     public void preUpdate() {
         fechaUltModificacion = LocalDate.now();

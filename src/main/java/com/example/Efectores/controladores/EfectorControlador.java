@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
+
 @Controller
 @RequestMapping("/efector")
 public class EfectorControlador {
@@ -13,10 +14,12 @@ public class EfectorControlador {
     public EfectorControlador(EfectorServicioImpl efectorServicio) {
         this.efectorServicio = efectorServicio;
     }
+
     @GetMapping("/crear")
     public String crear(ModelMap modelo) {
         return "efector_crear.html";
     }
+
     @PostMapping("creado")
     public String registro(
             @RequestParam String nombre,
@@ -46,6 +49,7 @@ public class EfectorControlador {
             return "efector_crear.html";
         }
     }
+
     @GetMapping("/listar")
     public String listar(ModelMap modelo) {
         List<Efector> efectores = efectorServicio.listarEfectores();
@@ -53,6 +57,7 @@ public class EfectorControlador {
 
         return"efector_listar.html";
     }
+
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Long id, ModelMap modelo) {
         modelo.put("efector", efectorServicio.buscarEfectorPorId(id));
@@ -62,6 +67,7 @@ public class EfectorControlador {
 
         return "efector_editar.html";
     }
+
     @PostMapping("/editar/{id}")
     public String modificarEfector(@PathVariable Long id,
                                      String nombre,
@@ -92,6 +98,7 @@ public class EfectorControlador {
             return "efector_editar.html";
         }
     }
+
     @GetMapping("/eliminar/{id}")
     public String eliminarEfector(@PathVariable Long id, ModelMap modelo) {
         efectorServicio.eliminarEfector(id);
