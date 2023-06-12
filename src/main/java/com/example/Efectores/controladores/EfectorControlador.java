@@ -25,18 +25,18 @@ public class EfectorControlador {
             String telefono2,
             @RequestParam String cuit,
             @RequestParam String email,
-            @RequestParam String departamento,
-            @RequestParam String provincia,
+            @RequestParam String nombreDepartamento,
+            @RequestParam String nombreProvincia,
             LocalDate fechaCreacion,
             String usuarioCreacion,
             LocalDate fechaUltModificacion,
             String usuarioUltModificacion,
             ModelMap modelo) {
         try {
-            efectorServicio.guardarEfector(nombre, domicilio, telefono1, telefono2, cuit, email, departamento, provincia,fechaCreacion,usuarioCreacion,fechaUltModificacion,usuarioUltModificacion);
+            efectorServicio.guardarEfector(nombre, domicilio, telefono1, telefono2, cuit, email, nombreDepartamento, nombreProvincia ,fechaCreacion,usuarioCreacion,fechaUltModificacion,usuarioUltModificacion);
 
             modelo.put("exito", "El efector fue cargado correctamente!");
-            modelo.addAttribute("proveedor", efectorServicio.listarEfectores());
+            modelo.addAttribute("efector", efectorServicio.listarEfectores());
 
             return "efector_listar.html";
 
@@ -51,7 +51,7 @@ public class EfectorControlador {
         List<Efector> efectores = efectorServicio.listarEfectores();
         modelo.addAttribute("efector", efectores);
 
-        return"proveedor_listar.html";
+        return"efector_listar.html";
     }
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Long id, ModelMap modelo) {
@@ -82,6 +82,7 @@ public class EfectorControlador {
                     fechaCreacion, usuarioCreacion, fechaUltModificacion,usuarioUltModificacion );
 
             modelo.put("exito", "exito");
+
             return "redirect:../listar";
 
         } catch (Exception e) {
@@ -90,5 +91,10 @@ public class EfectorControlador {
 
             return "efector_editar.html";
         }
+    }
+    @GetMapping("/eliminar/{id}")
+    public String eliminarEfector(@PathVariable Long id, ModelMap modelo) {
+        efectorServicio.eliminarEfector(id);
+        return "redirect:/efector/listar";
     }
 }

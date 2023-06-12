@@ -20,10 +20,8 @@ public class EfectorServicioImpl implements EfectorServicio {
         efector.setTelefono2(telefono2);
         efector.setCuit(cuit);
         efector.setEmail(email);
-        efector.setProvincia(provincia);
-        efector.setDepartamento(departamento);
-//      efector.setDepartamento(Departamento.valueOf(departamento));
-//      efector.setProvincia(Provincia.valueOf(provincia));
+        efector.setNombreProvincia(provincia);
+        efector.setNombreDepartamento(departamento);
         efector.setFechaCreacion(fechaCreacion);
         efector.setFechaUltModificacion(fechaUltModificacion);
         efector.setUsuarioCreacion(usuarioCreacion);
@@ -43,8 +41,8 @@ public class EfectorServicioImpl implements EfectorServicio {
             efector.setTelefono1(telefono1);
             efector.setTelefono2(telefono2);
             efector.setEmail(email);
-            efector.setDepartamento(departamento);
-            efector.setProvincia(provincia);
+            efector.setNombreDepartamento(departamento);
+            efector.setNombreProvincia(provincia);
             efector.setFechaCreacion(fechaCreacion);
             efector.setUsuarioCreacion(usuarioCreacion);
             efector.setUsuarioUltModificacion(usuarioUltModificacion);

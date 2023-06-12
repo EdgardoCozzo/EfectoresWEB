@@ -15,10 +15,11 @@ public class Efector {
     private String domicilio;
 
     @Column(name="provincia")
-    private String provincia;
+    private String nombreProvincia;
     @Column(name="departamento")
-    private String departamento;
-
+    private String nombreDepartamento;
+    @Column(name="pais")
+    private String nombrePais;
     @Column(name="cuit")
     private String cuit;
     @Column(name="telefono1")
